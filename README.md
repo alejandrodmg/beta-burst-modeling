@@ -5,7 +5,7 @@ Human motor cortex EEG beta (15-30 Hz) oscillations undergo transient power modu
 
 The prevailing view is that EEG beta bursts increase during stopping and immobility, but do not precede stopping. In contrast to prior work in humans and animals that used a latent and unobservable stopping time in the stop-signal task, we developed a translational animal model to align EEG with overt action stopping. 
 
-We recorded 32-electrode EEG along with the angular velocity of a treadmill while head-fixed rats stopped in-progress running on a freely-rotating, non-motorized treadmill. Contrasting prior work, motor cortex beta bursts increased **before stopping** and not during stopping or immobility. Using information-theoretic measures, we show that beta power was informative about treadmill velocity 200 ms in the future, but only during planning to stop. 
+We recorded 32-electrode EEG along with the angular velocity of a treadmill while head-fixed rats stopped in-progress running on a freely-rotating, non-motorized treadmill. Contrasting prior work, motor cortex beta bursts increased before stopping and not during stopping or immobility. Using information-theoretic measures, we show that beta power was informative about treadmill velocity 200 ms in the future, but only during planning to stop. 
 
 By introducing artificial temporal jitter to mimic the estimation of stopping time used in prior work, we show that this predictive brain-action relationship fails with even small jitter. Finally, we use a variety of machine learning methods to show that, despite EEG beta oscillations being a clear neural correlate preceding stopping, it has limited utility for real-time action decoding. 
 
@@ -13,7 +13,7 @@ Our work suggests a new conceptual model for neural control of action stopping.
 
 ## Paper
 For more details, refer to the full paper:  
-**[Volitional Stopping is Preceded by a Transient Beta Oscillation]([https://link-to-your-paper.com](https://www.biorxiv.org/content/10.1101/2024.12.28.630599v1.full))**
+**[Volitional Stopping is Preceded by a Transient Beta Oscillation](https://www.biorxiv.org/content/10.1101/2024.12.28.630599v1.full)**
 
 ## Citation
 ```bibtex
