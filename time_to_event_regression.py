@@ -70,7 +70,6 @@ class BaselineModel:
         self.mean_value = np.mean(y_train)
     def predict(self, X_test):
         return np.repeat(self.mean_value, len(X_test))
-    
 
 if __name__ == "__main__":
     # Initialize logging
