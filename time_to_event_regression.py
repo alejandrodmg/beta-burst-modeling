@@ -7,6 +7,7 @@ import h5py
 import numpy as np
 import pickle
 import logging
+import json
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
@@ -112,7 +113,7 @@ if __name__ == "__main__":
 
         # Train and evaluate each model
         for model_group, model_list in models.items():
-            reg_models_scores[rat_id][model_group] = []
+            reg_models_scores[rat_id][model_group] = {}
             for model in model_list:
                 # Create a unique identifier for the model
                 model_id = model.name if hasattr(model, "name") else type(model).__name__
@@ -127,3 +128,11 @@ if __name__ == "__main__":
                     y_pred = model.predict(X_test)
                     r2score = r2_score(y_test, y_pred)
                     reg_models_scores[rat_id][model_group][model_id].append(r2score)
+    # Store results
+    reg_models_accs = {
+        rat: {grp: [float(s) for s in max(mdls.values(), key=np.mean)]
+              for grp, mdls in groups.items()}
+        for rat, groups in reg_models_scores.items()
+    }
+    with open('reg_models_accs.json', 'w') as f:
+        json.dump(reg_models_accs, f, indent=2)
