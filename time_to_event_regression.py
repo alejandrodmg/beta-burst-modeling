@@ -128,11 +128,12 @@ if __name__ == "__main__":
                     y_pred = model.predict(X_test)
                     r2score = r2_score(y_test, y_pred)
                     reg_models_scores[rat_id][model_group][model_id].append(r2score)
-    # Store results
-    reg_models_accs = {
-        rat: {grp: [float(s) for s in max(mdls.values(), key=np.mean)]
-              for grp, mdls in groups.items()}
-        for rat, groups in reg_models_scores.items()
-    }
-    with open('reg_models_accs.json', 'w') as f:
-        json.dump(reg_models_accs, f, indent=2)
+                    
+        # Store results
+        reg_models_accs = {
+            rat: {grp: [float(s) for s in max(mdls.values(), key=np.mean)]
+                  for grp, mdls in groups.items()}
+            for rat, groups in reg_models_scores.items()
+        }
+        with open('reg_models_accs.json', 'w') as f:
+            json.dump(reg_models_accs, f, indent=2)
