@@ -7,6 +7,7 @@ import h5py
 import numpy as np
 import pickle
 import logging
+import json
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
@@ -103,7 +104,7 @@ if __name__ == "__main__":
 
         # Train and evaluate each model
         for model_group, model_list in models.items():
-            rand_class_models_scores[rat_id][model_group] = []
+            rand_class_models_scores[rat_id][model_group] = {}
             for model in model_list:
                 # Create a unique identifier for the model
                 model_id = model.name if hasattr(model, "name") else type(model).__name__
@@ -121,3 +122,12 @@ if __name__ == "__main__":
                         y_pred = model.predict(X_test)
                         acc = accuracy_score(y_test, y_pred)
                         rand_class_models_scores[rat_id][model_group][model_id].append(acc)
+                        
+    # Store results
+    rand_class_models_accs = {
+        rat: {grp: [float(a) for accs in mdls.values() for a in accs]
+              for grp, mdls in groups.items()}
+        for rat, groups in rand_class_models_scores.items()
+    }
+    with open('random_class_models_accs.json', 'w') as f:
+        json.dump(rand_class_models_accs, f)
